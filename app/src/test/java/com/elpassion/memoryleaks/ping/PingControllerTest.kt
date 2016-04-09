@@ -12,31 +12,30 @@ class PingControllerTest {
 
     val pingView: PingView = mock()
     val pingApi: () -> Observable<Unit> = mock()
+    val controller = PingController(pingApi, pingView)
 
     @Test
     fun shouldShowNotificationSendScreen() {
         whenever(pingApi.invoke()).thenReturn(just(Unit))
-
-        PingController(pingApi, pingView).onSendPingClicked()
-
+        onSendPingClick()
         verify(pingView).showNotificationSendScreen()
     }
 
     @Test
     fun shouldSendPingCall() {
         whenever(pingApi.invoke()).thenReturn(just(Unit))
-
-        PingController(pingApi, pingView).onSendPingClicked()
-
+        onSendPingClick()
         verify(pingApi).invoke()
     }
 
     @Test
     fun shouldShowErrorWhenApiCallFails() {
         whenever(pingApi.invoke()).thenReturn(error(RuntimeException()))
-
-        PingController(pingApi, pingView).onSendPingClicked()
-
+        onSendPingClick()
         verify(pingView).showFailureScreen()
+    }
+
+    private fun onSendPingClick() {
+        controller.onSendPingClicked()
     }
 }
