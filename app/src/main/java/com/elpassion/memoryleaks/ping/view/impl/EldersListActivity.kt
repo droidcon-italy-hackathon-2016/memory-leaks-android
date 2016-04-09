@@ -13,11 +13,11 @@ import com.elpassion.memoryleaks.ping.api.impl.PingApi
 import com.elpassion.memoryleaks.ping.view.PingView
 import kotlinx.android.synthetic.main.ping_activity.*
 
-class PingActivity : AppCompatActivity(), PingView {
+class EldersListActivity : AppCompatActivity(), PingView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ping_activity)
+        setContentView(R.layout.elders_list_activity)
         elders_list.layoutManager = LinearLayoutManager(this)
         elders_list.adapter = EldersListAdapter(listOf(Elder()), onElderClickListener)
     }
