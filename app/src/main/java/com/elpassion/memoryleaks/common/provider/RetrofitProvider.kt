@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.common.api
+package com.elpassion.memoryleaks.common.provider
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory

@@ -1,6 +1,6 @@
 package com.elpassion.memoryleaks.register.api.impl
 
-import com.elpassion.memoryleaks.common.api.RetrofitProvider
+import com.elpassion.memoryleaks.common.provider.RetrofitProvider
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable
