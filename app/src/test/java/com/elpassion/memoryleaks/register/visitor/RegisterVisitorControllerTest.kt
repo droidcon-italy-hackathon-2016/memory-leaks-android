@@ -1,6 +1,5 @@
 package com.elpassion.memoryleaks.register.visitor
 
-import com.elpassion.memoryleaks.register.visitor.RegisterVisitorController
 import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
