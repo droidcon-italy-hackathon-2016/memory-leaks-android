@@ -1,5 +1,7 @@
 package com.elpassion.memoryleaks.ping
 
+import rx.Observable
+
 interface PingApi {
-    fun call()
+    fun call(): Observable<Unit>
 }
