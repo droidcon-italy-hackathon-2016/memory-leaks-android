@@ -48,10 +48,14 @@ class RegisterVisitorController(
         private val view: RegistrationVisitorView) {
 
     fun onRegisterClick() {
-        apiCall.invoke().subscribe({
-            view.showConfirmationScreen()
-        }, {
-            view.showError()
-        })
+        apiCall.invoke().subscribe(onSuccess, onError)
+    }
+
+    val onSuccess = { unit: Unit ->
+        view.showConfirmationScreen()
+    }
+
+    val onError = { ex: Throwable ->
+        view.showError()
     }
 }
