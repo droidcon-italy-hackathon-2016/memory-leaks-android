@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".ping.view.impl.EldersListActivity"/>
         <activity android:name=".registervisitor.view.impl.RegisterVisitorActivity"/>
+        <activity android:name=".confirmation.view.impl.ConfirmationActivity"/>
     </application>
 
 </manifest>
