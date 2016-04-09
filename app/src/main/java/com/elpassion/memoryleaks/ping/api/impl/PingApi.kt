@@ -1,8 +1,6 @@
 package com.elpassion.memoryleaks.ping.api.impl
 
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+import com.elpassion.memoryleaks.common.api.RetrofitProvider.getRetrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable
@@ -16,11 +14,5 @@ interface PingApi {
         fun getPingApiCall(): ((String) -> Observable<Unit>) = { elderId ->
             getRetrofit().create(PingApi::class.java).call(elderId)
         }
-
-        private fun getRetrofit() = Retrofit.Builder()
-                .baseUrl("https://google.com")
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
     }
 }
