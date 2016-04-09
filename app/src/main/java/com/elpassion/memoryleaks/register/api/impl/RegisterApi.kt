@@ -12,13 +12,13 @@ interface RegisterApi {
 
     companion object {
         fun getRegisterElderApiCall(): ((String, String) -> Observable<Unit>) = { elderId, token ->
-            createRegisterApiImpl().call(elderId, token)
+            registerApi.call(elderId, token)
         }
 
         fun getRegisterVisitorApiCall(): ((String) -> Observable<Unit>) = { elderId ->
-            createRegisterApiImpl().call(elderId)
+            registerApi.call(elderId)
         }
 
-        private fun createRegisterApiImpl() = RetrofitProvider.getRetrofit().create(RegisterApi::class.java)
+        private val registerApi by lazy { RetrofitProvider.getRetrofit().create(RegisterApi::class.java) }
     }
 }
