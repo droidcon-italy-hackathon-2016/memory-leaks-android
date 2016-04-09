@@ -6,6 +6,7 @@
         android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"
         android:protectionLevel="signature"/>
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"/>
 
     <application
