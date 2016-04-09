@@ -17,7 +17,7 @@ class PingActivity : AppCompatActivity(), PingView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ping_activity)
         findViewById(R.id.send_ping)!!.setOnClickListener {
-            PingController(pingCall, this).onSendPingClicked()
+            PingController(pingCall, this).onSendPingClicked("grandma-id")
         }
     }
 

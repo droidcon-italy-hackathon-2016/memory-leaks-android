@@ -4,16 +4,17 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 import rx.Observable
 
 interface PingApi {
 
     @GET("ping")
-    fun call(): Observable<Unit>
+    fun call(@Query("elder_id") elderId: String): Observable<Unit>
 
     companion object {
-        fun getPingApiCall(): (() -> Observable<Unit>) = {
-            getRetrofit().create(PingApi::class.java).call()
+        fun getPingApiCall(): ((String) -> Observable<Unit>) = { elderId ->
+            getRetrofit().create(PingApi::class.java).call(elderId)
         }
 
         private fun getRetrofit() = Retrofit.Builder()

@@ -1,6 +1,7 @@
 package com.elpassion.memoryleaks.ping
 
 import com.elpassion.memoryleaks.ping.view.PingView
+import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
@@ -12,7 +13,7 @@ import rx.Observable.just
 class PingControllerTest {
 
     val pingView: PingView = mock()
-    val pingCall: () -> Observable<Unit> = mock()
+    val pingCall: (String) -> Observable<Unit> = mock()
     val controller = PingController(pingCall, pingView)
 
     @Test
@@ -26,7 +27,7 @@ class PingControllerTest {
     fun shouldSendPingCall() {
         mockApiToReturn(just(Unit))
         onSendPingClick()
-        verify(pingCall).invoke()
+        verify(pingCall).invoke(any())
     }
 
     @Test
@@ -37,10 +38,10 @@ class PingControllerTest {
     }
 
     private fun mockApiToReturn(observable: Observable<Unit>) {
-        whenever(pingCall.invoke()).thenReturn(observable)
+        whenever(pingCall.invoke(any())).thenReturn(observable)
     }
 
     private fun onSendPingClick() {
-        controller.onSendPingClicked()
+        controller.onSendPingClicked("grandma-id")
     }
 }
