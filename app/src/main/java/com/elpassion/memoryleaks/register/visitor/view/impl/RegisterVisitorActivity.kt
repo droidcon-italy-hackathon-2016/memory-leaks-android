@@ -1,12 +1,12 @@
-package com.elpassion.memoryleaks.registervisitor.view.impl
+package com.elpassion.memoryleaks.register.visitor.view.impl
 
 import android.os.Bundle
 import android.widget.TextView
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
-import com.elpassion.memoryleaks.registervisitor.RegisterVisitorController
-import com.elpassion.memoryleaks.registervisitor.RegisterVisitorView
+import com.elpassion.memoryleaks.register.visitor.RegisterVisitorController
+import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
 import rx.Observable.just
 
 class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {

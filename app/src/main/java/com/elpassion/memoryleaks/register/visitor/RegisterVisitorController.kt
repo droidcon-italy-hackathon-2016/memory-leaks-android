@@ -1,5 +1,6 @@
-package com.elpassion.memoryleaks.registervisitor
+package com.elpassion.memoryleaks.register.visitor
 
+import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
 import rx.Observable
 
 class RegisterVisitorController(
