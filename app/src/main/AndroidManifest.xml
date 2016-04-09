@@ -10,6 +10,7 @@
     <uses-permission android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"/>
 
     <application
+        android:name=".MemoryLeakApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
