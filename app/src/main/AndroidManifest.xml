@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.elpassion.memoryleaks">
+<manifest package="com.elpassion.memoryleaks"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <permission
         android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"
@@ -28,7 +28,8 @@
         </receiver>
 
         <activity android:name=".ping.view.impl.EldersListActivity"/>
-        <activity android:name=".register.elder.view.impl.RegisterElderActivity"
+        <activity
+            android:name=".register.elder.view.impl.RegisterElderActivity"
             android:label="Elder app">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -54,18 +55,6 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
             </intent-filter>
         </service>
-
-        <service
-            android:name=".notifications.MyInstanceIdListenerService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
-            </intent-filter>
-        </service>
-
-        <service
-            android:name=".notifications.RegistrationIntentService"
-            android:enabled="true"/>
 
     </application>
 
