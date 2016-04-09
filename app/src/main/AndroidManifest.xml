@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.elpassion.memoryleaks">
+<manifest package="com.elpassion.memoryleaks"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <permission
+        android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
 
     <application
         android:allowBackup="true"
