@@ -16,23 +16,27 @@ class PingControllerTest {
 
     @Test
     fun shouldShowNotificationSendScreen() {
-        whenever(pingApi.invoke()).thenReturn(just(Unit))
+        mockApiToReturn(just(Unit))
         onSendPingClick()
         verify(pingView).showNotificationSendScreen()
     }
 
     @Test
     fun shouldSendPingCall() {
-        whenever(pingApi.invoke()).thenReturn(just(Unit))
+        mockApiToReturn(just(Unit))
         onSendPingClick()
         verify(pingApi).invoke()
     }
 
     @Test
     fun shouldShowErrorWhenApiCallFails() {
-        whenever(pingApi.invoke()).thenReturn(error(RuntimeException()))
+        mockApiToReturn(error(RuntimeException()))
         onSendPingClick()
         verify(pingView).showFailureScreen()
+    }
+
+    private fun mockApiToReturn(observable: Observable<Unit>) {
+        whenever(pingApi.invoke()).thenReturn(observable)
     }
 
     private fun onSendPingClick() {
