@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.0.1'
+    ext.kotlin_version = '1.0.0'
     ext.support_library_version = '23.2.1'
     ext.espresso_version = '2.2.2'
     repositories {
@@ -56,5 +56,5 @@ dependencies {
         exclude group: 'org.hamcrest'
     }
     testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile "com.nhaarman:mockito-kotlin:0.3.1"
 }
