@@ -1,1 +1,2 @@
+[![Stories in Ready](https://badge.waffle.io/droidcon-italy-hackathon-2016/memory-leaks-android.png?label=ready&title=Ready)](https://waffle.io/droidcon-italy-hackathon-2016/memory-leaks-android)
 # memory-leaks-android
