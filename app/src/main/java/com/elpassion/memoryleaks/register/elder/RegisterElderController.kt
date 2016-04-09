@@ -4,12 +4,12 @@ import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
 import rx.Observable
 
 class RegisterElderController(
-        private val apiCall: (name: String, token: String) -> Observable<Unit>,
+        private val registerElder: (name: String, token: String) -> Observable<Unit>,
         private val view: RegisterElderView) {
 
     fun onRegisterClick() {
         val name = view.getUserData()
-        apiCall.invoke(name, "token").subscribe(onSuccess, onError)
+        registerElder(name, "token").subscribe(onSuccess, onError)
     }
 
     val onSuccess = { unit: Unit ->

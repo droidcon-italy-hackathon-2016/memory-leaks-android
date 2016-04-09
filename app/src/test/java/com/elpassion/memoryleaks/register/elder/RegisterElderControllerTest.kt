@@ -1,6 +1,6 @@
 package com.elpassion.memoryleaks.register.elder
 
-import com.elpassion.memoryleaks.register.visitor.view.RegisterElderView
+import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify

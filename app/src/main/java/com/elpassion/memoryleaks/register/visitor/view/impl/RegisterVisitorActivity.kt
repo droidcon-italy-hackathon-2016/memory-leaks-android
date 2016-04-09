@@ -5,13 +5,13 @@ import android.widget.TextView
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
+import com.elpassion.memoryleaks.register.api.impl.RegisterApi
 import com.elpassion.memoryleaks.register.visitor.RegisterVisitorController
 import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
-import rx.Observable.just
 
 class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {
 
-    private val controller = RegisterVisitorController({ just(Unit) }, this)
+    private val controller = RegisterVisitorController(RegisterApi.getRegisterVisitorApiCall(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
