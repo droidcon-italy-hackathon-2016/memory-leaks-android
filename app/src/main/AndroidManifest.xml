@@ -6,7 +6,7 @@
         android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"
         android:protectionLevel="signature"/>
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"/>
 
     <application
@@ -19,10 +19,10 @@
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="com.elpassion.memoryleaks" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.elpassion.memoryleaks"/>
             </intent-filter>
         </receiver>
 
@@ -36,6 +36,14 @@
         <activity android:name=".ping.view.impl.EldersListActivity"/>
         <activity android:name=".register.visitor.view.impl.RegisterVisitorActivity"/>
         <activity android:name=".confirmation.view.impl.ConfirmationActivity"/>
+
+        <service
+            android:name=".notifications.NotificationListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </service>
 
     </application>
 
