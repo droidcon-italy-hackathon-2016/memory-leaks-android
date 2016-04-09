@@ -1,12 +1,9 @@
 package com.elpassion.memoryleaks.register.elder.view.impl
 
 import android.os.Bundle
-import android.widget.TextView
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
-import com.elpassion.memoryleaks.common.provider.ContextProvider
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
-import com.elpassion.memoryleaks.register.api.impl.RegisterApi
 import com.elpassion.memoryleaks.register.api.impl.RegisterElderService
 import com.elpassion.memoryleaks.register.elder.RegisterElderController
 import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
@@ -18,14 +15,8 @@ import rx.schedulers.Schedulers
 class RegisterElderActivity : BaseActivity(), RegisterElderView {
 
     private val controller = RegisterElderController(
-            createRegisterElderService()
-                    .registerElderCall
-                    .applySchedulers(),
+            RegisterElderService.getRegisterElderCall().applySchedulers(),
             this)
-
-    private fun createRegisterElderService() = RegisterElderService(
-            RegisterApi.getRegisterElderApiCall(),
-            ContextProvider.get)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
