@@ -7,11 +7,19 @@ import org.junit.Test
 class PingControllerTest {
 
     val pingView: PingView = mock()
+    val pingApi: PingApi = mock()
 
     @Test
     fun shouldShowNotificationSendScreen() {
-        PingController(pingView).onSendPingClicked()
+        PingController(pingApi, pingView).onSendPingClicked()
 
         verify(pingView).showNotificationSendScreen()
+    }
+
+    @Test
+    fun shouldSendPingCall() {
+        PingController(pingApi, pingView).onSendPingClicked()
+
+        verify(pingApi).call()
     }
 }
