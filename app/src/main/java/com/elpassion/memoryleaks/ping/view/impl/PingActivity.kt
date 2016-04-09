@@ -6,12 +6,12 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.ping.PingController
+import com.elpassion.memoryleaks.ping.api.impl.PingApi
 import com.elpassion.memoryleaks.ping.view.PingView
-import rx.Observable
 
 class PingActivity : AppCompatActivity(), PingView {
 
-    val pingCall = { Observable.just(Unit) }
+    val pingCall = PingApi.getPingApiCall()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
