@@ -1,6 +1,6 @@
 package com.elpassion.memoryleaks.ping
 
-import com.elpassion.memoryleaks.ping.view.PingView
+import com.elpassion.memoryleaks.ping.PingView
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify

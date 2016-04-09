@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.ping.view.impl
+package com.elpassion.memoryleaks.ui.elder.list
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

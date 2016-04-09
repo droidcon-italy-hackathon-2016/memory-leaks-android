@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.ping.view.impl;
+package com.elpassion.memoryleaks.ui.elder.list;
 
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -14,7 +14,7 @@ import com.elpassion.memoryleaks.elder.list.api.EldersListApiCallProvider.getEld
 import com.elpassion.memoryleaks.model.Elder
 import com.elpassion.memoryleaks.ping.PingController
 import com.elpassion.memoryleaks.ping.api.impl.PingApi.Companion.getPingApiCall
-import com.elpassion.memoryleaks.ping.view.PingView
+import com.elpassion.memoryleaks.ping.PingView
 import kotlinx.android.synthetic.main.elders_list_activity.*
 
 class EldersListActivity : AppCompatActivity(), PingView, EldersListView {

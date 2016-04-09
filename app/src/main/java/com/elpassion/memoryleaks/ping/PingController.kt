@@ -1,6 +1,6 @@
 package com.elpassion.memoryleaks.ping
 
-import com.elpassion.memoryleaks.ping.view.PingView
+import com.elpassion.memoryleaks.ping.PingView
 import rx.Observable
 
 class PingController(val pingApi: (String) -> Observable<Unit>, val pingView: PingView) {
