@@ -5,6 +5,7 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Test
 import rx.Observable
+import rx.Observable.error
 import rx.Observable.just
 
 class RegisterVisitorControllerTest {
@@ -26,11 +27,20 @@ class RegisterVisitorControllerTest {
         controller.onRegisterClick()
         verify(view).showConfirmationScreen()
     }
+
+    @Test
+    fun shouldShowError() {
+        whenever(apiCall.invoke()).thenReturn(error(RuntimeException()))
+        controller.onRegisterClick()
+        verify(view).showError()
+    }
 }
 
 interface  RegistrationVisitorView {
 
     fun showConfirmationScreen()
+
+    fun showError()
 }
 
 class RegisterVisitorController(
@@ -38,8 +48,10 @@ class RegisterVisitorController(
         private val view: RegistrationVisitorView) {
 
     fun onRegisterClick() {
-        apiCall.invoke().subscribe {
+        apiCall.invoke().subscribe({
             view.showConfirmationScreen()
-        }
+        }, {
+            view.showError()
+        })
     }
 }
