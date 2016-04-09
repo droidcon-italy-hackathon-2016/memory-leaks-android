@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.list
+package com.elpassion.memoryleaks.elder.list
 
 import com.elpassion.memoryleaks.elder.list.EldersListController
 import com.elpassion.memoryleaks.elder.list.EldersListView
