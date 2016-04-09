@@ -12,8 +12,8 @@ import rx.Observable.just
 class PingControllerTest {
 
     val pingView: PingView = mock()
-    val pingApi: () -> Observable<Unit> = mock()
-    val controller = PingController(pingApi, pingView)
+    val pingCall: () -> Observable<Unit> = mock()
+    val controller = PingController(pingCall, pingView)
 
     @Test
     fun shouldShowNotificationSendScreen() {
@@ -26,7 +26,7 @@ class PingControllerTest {
     fun shouldSendPingCall() {
         mockApiToReturn(just(Unit))
         onSendPingClick()
-        verify(pingApi).invoke()
+        verify(pingCall).invoke()
     }
 
     @Test
@@ -37,7 +37,7 @@ class PingControllerTest {
     }
 
     private fun mockApiToReturn(observable: Observable<Unit>) {
-        whenever(pingApi.invoke()).thenReturn(observable)
+        whenever(pingCall.invoke()).thenReturn(observable)
     }
 
     private fun onSendPingClick() {
