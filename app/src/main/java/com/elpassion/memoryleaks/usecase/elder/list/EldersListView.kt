@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.elder.list
+package com.elpassion.memoryleaks.usecase.elder.list
 
 import com.elpassion.memoryleaks.model.Elder
 

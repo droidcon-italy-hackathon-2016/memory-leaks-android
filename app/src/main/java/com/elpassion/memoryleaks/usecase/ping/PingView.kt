@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.ping
+package com.elpassion.memoryleaks.usecase.ping
 
 interface PingView {
 

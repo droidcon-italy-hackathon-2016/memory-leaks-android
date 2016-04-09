@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.elder.add
+package com.elpassion.memoryleaks.usecase.elder.add
 
 import rx.Observable
 

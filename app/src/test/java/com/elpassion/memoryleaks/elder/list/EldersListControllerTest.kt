@@ -1,7 +1,7 @@
 package com.elpassion.memoryleaks.elder.list
 
-import com.elpassion.memoryleaks.elder.list.EldersListController
-import com.elpassion.memoryleaks.elder.list.EldersListView
+import com.elpassion.memoryleaks.usecase.elder.list.EldersListController
+import com.elpassion.memoryleaks.usecase.elder.list.EldersListView
 import com.elpassion.memoryleaks.model.Elder
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock

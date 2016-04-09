@@ -1,5 +1,7 @@
 package com.elpassion.memoryleaks.elder.add
 
+import com.elpassion.memoryleaks.usecase.elder.add.ElderAddController
+import com.elpassion.memoryleaks.usecase.elder.add.ElderAddView
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever

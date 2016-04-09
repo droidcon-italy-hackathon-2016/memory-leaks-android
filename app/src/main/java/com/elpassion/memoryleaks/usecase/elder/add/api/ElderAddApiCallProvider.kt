@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.elder.add.api
+package com.elpassion.memoryleaks.usecase.elder.add.api
 
 import com.elpassion.memoryleaks.common.provider.RetrofitProvider.getRetrofit
 import retrofit2.http.GET

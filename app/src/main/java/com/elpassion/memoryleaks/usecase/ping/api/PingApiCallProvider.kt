@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.ping.api
+package com.elpassion.memoryleaks.usecase.ping.api
 
 import com.elpassion.memoryleaks.common.provider.RetrofitProvider.getRetrofit
 import retrofit2.http.GET

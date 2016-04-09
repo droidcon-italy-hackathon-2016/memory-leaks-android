@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.elder.list.api
+package com.elpassion.memoryleaks.usecase.elder.list.api
 
 import com.elpassion.memoryleaks.common.provider.RetrofitProvider
 import com.elpassion.memoryleaks.model.Elder
