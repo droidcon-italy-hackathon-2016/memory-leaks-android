@@ -1,5 +1,6 @@
 package com.elpassion.memoryleaks.ping.view.impl;
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.design.widget.CoordinatorLayout
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.elders_list_activity.*
 class EldersListActivity : AppCompatActivity(), PingView, EldersListView {
 
     val eldersListController by lazy { EldersListController(getEldersListApiCall(), this) }
+    val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class EldersListActivity : AppCompatActivity(), PingView, EldersListView {
 
     private val onElderClickListener: (String) -> Unit = {
         PingController(getPingApiCall(), this).onSendPingClicked(it)
+        mediaPlayer.startIfNotPlaying()
     }
 
     override fun showElders(elders: List<Elder>) {
@@ -45,5 +48,9 @@ class EldersListActivity : AppCompatActivity(), PingView, EldersListView {
 
     fun CoordinatorLayout.showSnackBar(@StringRes message: Int) {
         Snackbar.make(this, message, Snackbar.LENGTH_INDEFINITE).show()
+    }
+
+    fun MediaPlayer.startIfNotPlaying() {
+        if (!isPlaying) start()
     }
 }
