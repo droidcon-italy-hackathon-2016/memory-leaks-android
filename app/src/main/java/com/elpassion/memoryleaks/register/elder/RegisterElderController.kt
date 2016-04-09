@@ -1,6 +1,6 @@
 package com.elpassion.memoryleaks.register.elder
 
-import com.elpassion.memoryleaks.register.visitor.view.RegisterElderView
+import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
 import rx.Observable
 
 class RegisterElderController(

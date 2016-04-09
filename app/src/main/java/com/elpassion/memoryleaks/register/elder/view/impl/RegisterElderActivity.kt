@@ -6,9 +6,7 @@ import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
 import com.elpassion.memoryleaks.register.elder.RegisterElderController
-import com.elpassion.memoryleaks.register.visitor.RegisterVisitorController
-import com.elpassion.memoryleaks.register.visitor.view.RegisterElderView
-import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
+import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
 import rx.Observable.just
 
 class RegisterElderActivity : BaseActivity(), RegisterElderView {

@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.register.visitor.view
+package com.elpassion.memoryleaks.register.elder.view
 
 interface RegisterElderView {
 
