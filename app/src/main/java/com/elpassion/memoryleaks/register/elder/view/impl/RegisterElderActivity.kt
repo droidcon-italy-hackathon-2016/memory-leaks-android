@@ -37,7 +37,7 @@ class RegisterElderActivity : BaseActivity(), RegisterElderView {
 
 
 //TODO: think about different approach
-fun <P, R> Function1<P, Observable<R>>.applySchedulers(): (P) -> Observable<R> {
+fun <P, R> ((P) -> Observable<R>).applySchedulers(): (P) -> Observable<R> {
     return { arg: P ->
         this(arg).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
