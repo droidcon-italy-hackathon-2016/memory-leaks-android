@@ -2,22 +2,36 @@ package com.elpassion.memoryleaks.registervisitor
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Test
+import rx.Observable
+import rx.Observable.error
+import rx.Observable.just
 
 class RegisterVisitorControllerTest {
 
-    private val apiCall: () -> Unit = mock()
+    private val apiCall: () -> Observable<Unit> = mock()
+    private val view: RegisterVisitorView = mock()
+    private val controller = RegisterVisitorController(apiCall, view)
 
     @Test
     fun shouldInvokeApiCall() {
-        RegisterVisitorController(apiCall).onRegisterClick()
+        whenever(apiCall.invoke()).thenReturn(just(Unit))
+        controller.onRegisterClick()
         verify(apiCall).invoke()
     }
-}
 
-class RegisterVisitorController(private val apiCall: () -> Unit) {
+    @Test
+    fun shouldShowConfirmationScreen() {
+        whenever(apiCall.invoke()).thenReturn(just(Unit))
+        controller.onRegisterClick()
+        verify(view).showConfirmationScreen()
+    }
 
-    fun onRegisterClick() {
-        apiCall.invoke()
+    @Test
+    fun shouldShowError() {
+        whenever(apiCall.invoke()).thenReturn(error(RuntimeException()))
+        controller.onRegisterClick()
+        verify(view).showError()
     }
 }
