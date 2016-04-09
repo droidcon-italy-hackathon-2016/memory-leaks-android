@@ -12,28 +12,28 @@ import rx.Observable.just
 
 class RegisterElderControllerTest {
 
-    private val apiCall: (name: String, token: String) -> Observable<Unit> = mock()
+    private val registerElder: (name: String) -> Observable<Unit> = mock()
     private val view: RegisterElderView = mock()
-    private val controller = RegisterElderController(apiCall, view)
+    private val controller = RegisterElderController(registerElder, view)
 
     @Test
     fun shouldInvokeApiCall() {
-        whenever(apiCall.invoke(any(), any())).thenReturn(just(Unit))
+        whenever(registerElder(any())).thenReturn(just(Unit))
         whenever(view.getUserData()).thenReturn("Maciej T.")
         controller.onRegisterClick()
-        verify(apiCall).invoke("Maciej T.", any())
+        verify(registerElder).invoke("Maciej T.")
     }
 
     @Test
     fun shouldShowConfirmationScreen() {
-        whenever(apiCall.invoke(any(), any())).thenReturn(just(Unit))
+        whenever(registerElder(any())).thenReturn(just(Unit))
         controller.onRegisterClick()
         verify(view).showConfirmationScreen()
     }
 
     @Test
     fun shouldShowError() {
-        whenever(apiCall.invoke(any(), any())).thenReturn(error(RuntimeException()))
+        whenever(registerElder(any())).thenReturn(error(RuntimeException()))
         controller.onRegisterClick()
         verify(view).showError()
     }
