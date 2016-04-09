@@ -1,11 +1,11 @@
 package com.elpassion.memoryleaks.elder.add
 
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Test
 import rx.Observable
+import rx.Observable.error
 import rx.Observable.just
 
 class ElderAddControllerTest {
@@ -26,6 +26,13 @@ class ElderAddControllerTest {
         mockApiToReturn(just(Unit))
         elderAddController.onAddElderClick()
         verify(elderAddView).showSuccess()
+    }
+
+    @Test
+    fun shouldShowError() {
+        mockApiToReturn(error(RuntimeException()))
+        elderAddController.onAddElderClick()
+        verify(elderAddView).showError()
     }
 
     private fun mockApiToReturn(observable: Observable<Unit>) {
