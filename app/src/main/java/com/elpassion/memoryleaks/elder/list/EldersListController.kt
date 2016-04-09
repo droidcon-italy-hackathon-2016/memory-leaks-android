@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.elders_list
+package com.elpassion.memoryleaks.elder.list
 
 import com.elpassion.memoryleaks.model.Elder
 import rx.Observable

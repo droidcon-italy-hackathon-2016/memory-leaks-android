@@ -8,9 +8,9 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.elpassion.memoryleaks.R
-import com.elpassion.memoryleaks.elders_list.EldersListController
-import com.elpassion.memoryleaks.elders_list.EldersListView
-import com.elpassion.memoryleaks.elders_list.api.impl.EldersListApi.Companion.getEldersListApiCall
+import com.elpassion.memoryleaks.elder.list.EldersListController
+import com.elpassion.memoryleaks.elder.list.EldersListView
+import com.elpassion.memoryleaks.elder.list.api.impl.EldersListApi.Companion.getEldersListApiCall
 import com.elpassion.memoryleaks.model.Elder
 import com.elpassion.memoryleaks.ping.PingController
 import com.elpassion.memoryleaks.ping.api.impl.PingApi.Companion.getPingApiCall

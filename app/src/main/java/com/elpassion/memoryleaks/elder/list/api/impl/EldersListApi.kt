@@ -1,4 +1,4 @@
-package com.elpassion.memoryleaks.elders_list.api.impl
+package com.elpassion.memoryleaks.elder.list.api.impl
 
 import com.elpassion.memoryleaks.model.Elder
 import retrofit2.http.GET
