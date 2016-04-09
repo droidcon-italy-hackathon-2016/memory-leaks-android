@@ -7,25 +7,34 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Test
 import rx.Observable
+import rx.Observable.error
+import rx.Observable.just
 
 class EldersListControllerTest {
 
     val eldersListCall: () -> Observable<List<Elder>> = mock()
     val eldersListView: EldersListView = mock()
-    val eldersListController = EldersListController(eldersListCall)
+    val eldersListController = EldersListController(eldersListCall, eldersListView)
 
     @Test
     fun shouldCallForElders() {
-        mockApiToReturn(Observable.just(emptyList()))
+        mockApiToReturn(just(emptyList()))
         eldersListController.onViewCreated()
         verify(eldersListCall).invoke()
     }
 
     @Test
     fun shouldDisplayElders() {
-        mockApiToReturn(Observable.just(emptyList()))
+        mockApiToReturn(just(emptyList()))
         eldersListController.onViewCreated()
         verify(eldersListView).showElders(any())
+    }
+
+    @Test
+    fun shouldDisplayError() {
+        mockApiToReturn(error(RuntimeException()))
+        eldersListController.onViewCreated()
+        verify(eldersListView).showError()
     }
 
     private fun mockApiToReturn(observable: Observable<List<Elder>>) {

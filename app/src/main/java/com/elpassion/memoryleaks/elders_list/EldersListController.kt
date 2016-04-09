@@ -3,9 +3,18 @@ package com.elpassion.memoryleaks.elders_list
 import com.elpassion.memoryleaks.model.Elder
 import rx.Observable
 
-class EldersListController(val eldersListCall: () -> Observable<List<Elder>>) {
+class EldersListController(val eldersListCall: () -> Observable<List<Elder>>,
+                           val eldersListView: EldersListView) {
 
     fun onViewCreated() {
-        eldersListCall.invoke()
+        eldersListCall.invoke().subscribe(onSuccess, onError)
+    }
+
+    private val onSuccess = { elders: List<Elder> ->
+        eldersListView.showElders(elders)
+    }
+
+    private val onError = { t: Throwable ->
+        eldersListView.showError()
     }
 }
