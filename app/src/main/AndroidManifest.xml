@@ -28,14 +28,17 @@
         </receiver>
 
         <activity android:name=".ping.view.impl.EldersListActivity"/>
-        <activity android:name=".register.elder.view.impl.RegisterElderActivity">
+        <activity android:name=".register.elder.view.impl.RegisterElderActivity"
+            android:label="Elder app">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".register.visitor.view.impl.RegisterVisitorActivity">
+        <activity
+            android:name=".register.visitor.view.impl.RegisterVisitorActivity"
+            android:label="Care Taker app">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
