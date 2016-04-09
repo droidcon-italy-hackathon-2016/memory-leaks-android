@@ -13,8 +13,8 @@ import com.elpassion.memoryleaks.elder.list.EldersListView
 import com.elpassion.memoryleaks.elder.list.api.EldersListApiCallProvider.getEldersListApiCall
 import com.elpassion.memoryleaks.model.Elder
 import com.elpassion.memoryleaks.ping.PingController
-import com.elpassion.memoryleaks.ping.api.impl.PingApi.Companion.getPingApiCall
 import com.elpassion.memoryleaks.ping.PingView
+import com.elpassion.memoryleaks.ping.api.PingApiCallProvider.getPingApiCall
 import kotlinx.android.synthetic.main.elders_list_activity.*
 
 class EldersListActivity : AppCompatActivity(), PingView, EldersListView {
