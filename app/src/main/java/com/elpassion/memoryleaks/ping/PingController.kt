@@ -1,9 +1,11 @@
 package com.elpassion.memoryleaks.ping
 
-class PingController(val pingApi: PingApi, val pingView: PingView) {
+import rx.Observable
+
+class PingController(val pingApi: () -> Observable<Unit>, val pingView: PingView) {
 
     fun onSendPingClicked() {
-        pingApi.call().subscribe(onSuccess, onError)
+        pingApi.invoke().subscribe(onSuccess, onError)
     }
 
     private val onSuccess = { unit: Unit ->
