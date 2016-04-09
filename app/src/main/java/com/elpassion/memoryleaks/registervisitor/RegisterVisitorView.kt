@@ -5,4 +5,6 @@ interface  RegisterVisitorView {
     fun showConfirmationScreen()
 
     fun showError()
+
+    fun getUserData(): String
 }

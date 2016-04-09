@@ -3,11 +3,12 @@ package com.elpassion.memoryleaks.registervisitor
 import rx.Observable
 
 class RegisterVisitorController(
-        private val apiCall: () -> Observable<Unit>,
+        private val apiCall: (name: String) -> Observable<Unit>,
         private val view: RegisterVisitorView) {
 
     fun onRegisterClick() {
-        apiCall.invoke().subscribe(onSuccess, onError)
+        val name = view.getUserData()
+        apiCall.invoke(name).subscribe(onSuccess, onError)
     }
 
     val onSuccess = { unit: Unit ->

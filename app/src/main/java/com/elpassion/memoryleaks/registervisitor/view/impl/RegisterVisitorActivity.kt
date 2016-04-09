@@ -1,6 +1,7 @@
 package com.elpassion.memoryleaks.registervisitor.view.impl
 
 import android.os.Bundle
+import android.widget.TextView
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
@@ -26,4 +27,6 @@ class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {
     override fun showError() {
 
     }
+
+    override fun getUserData() = (findViewById(R.id.register_visitor_name) as TextView).text.toString()
 }
