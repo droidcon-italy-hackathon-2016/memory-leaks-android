@@ -1,35 +1,40 @@
 package com.elpassion.memoryleaks.ping.view.impl;
 
 import android.os.Bundle
+import android.support.annotation.StringRes
+import android.support.design.widget.CoordinatorLayout
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.support.v7.widget.LinearLayoutManager
 import com.elpassion.memoryleaks.R
+import com.elpassion.memoryleaks.model.Elder
 import com.elpassion.memoryleaks.ping.PingController
 import com.elpassion.memoryleaks.ping.api.impl.PingApi
 import com.elpassion.memoryleaks.ping.view.PingView
+import kotlinx.android.synthetic.main.ping_activity.*
 
 class PingActivity : AppCompatActivity(), PingView {
-
-    val pingCall = PingApi.getPingApiCall()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ping_activity)
-        findViewById(R.id.send_ping)!!.setOnClickListener {
-            PingController(pingCall, this).onSendPingClicked("grandma-id")
-        }
+        elders_list.layoutManager = LinearLayoutManager(this)
+        elders_list.adapter = EldersListAdapter(listOf(Elder()), onElderClickListener)
+    }
+
+    private val onElderClickListener: (String) -> Unit = {
+        PingController(PingApi.getPingApiCall(), this).onSendPingClicked(it)
     }
 
     override fun showNotificationSendScreen() {
-        findViewById(R.id.send_ping)!!.visibility = GONE
-        findViewById(R.id.ping_sent_screen)!!.visibility = VISIBLE
-        findViewById(R.id.error_occurred)!!.visibility = GONE
+        elders_list_coordinator.showSnackBar(R.string.ping_was_send)
     }
 
     override fun showFailureScreen() {
-        findViewById(R.id.send_ping)!!.visibility = GONE
-        findViewById(R.id.ping_sent_screen)!!.visibility = GONE
-        findViewById(R.id.error_occurred)!!.visibility = VISIBLE
+        elders_list_coordinator.showSnackBar(R.string.error_occurred)
+    }
+
+    fun CoordinatorLayout.showSnackBar(@StringRes message: Int) {
+        Snackbar.make(this, message, Snackbar.LENGTH_INDEFINITE).show()
     }
 }
