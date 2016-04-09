@@ -4,15 +4,28 @@ import android.os.Bundle
 import android.widget.TextView
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
+import com.elpassion.memoryleaks.common.provider.ContextProvider
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
 import com.elpassion.memoryleaks.register.api.impl.RegisterApi
+import com.elpassion.memoryleaks.register.api.impl.RegisterElderService
 import com.elpassion.memoryleaks.register.elder.RegisterElderController
 import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
 import kotlinx.android.synthetic.main.register_elder_activity.*
+import rx.Observable
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 class RegisterElderActivity : BaseActivity(), RegisterElderView {
 
-    private val controller = RegisterElderController(RegisterApi.getRegisterElderApiCall(), this)
+    private val controller = RegisterElderController(
+            createRegisterElderService()
+                    .registerElderCall
+                    .applySchedulers(),
+            this)
+
+    private fun createRegisterElderService() = RegisterElderService(
+            RegisterApi.getRegisterElderApiCall(),
+            ContextProvider.get)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,4 +42,13 @@ class RegisterElderActivity : BaseActivity(), RegisterElderView {
     }
 
     override fun getUserData() = register_elder_name.text.toString()
+}
+
+
+//TODO: think about different approach
+fun <P, R> Function1<P, Observable<R>>.applySchedulers(): (P) -> Observable<R> {
+    return { arg: P ->
+        this(arg).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
 }

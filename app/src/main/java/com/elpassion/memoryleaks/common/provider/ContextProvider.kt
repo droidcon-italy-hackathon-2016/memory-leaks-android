@@ -8,7 +8,7 @@ object ContextProvider {
 
     private val instance: Context by lazy { throw RuntimeException("Context not set") }
 
-    fun get(): Context {
-        return overrided ?: instance
+    val get: () -> Context = {
+        overrided ?: instance
     }
 }
