@@ -14,7 +14,7 @@ class PingController(val pingApi: (String) -> Observable<Unit>, val pingView: Pi
     }
 
     private val onError = { t: Throwable ->
-        pingView.showFailureScreen()
+        pingView.showError()
     }
 }
 
