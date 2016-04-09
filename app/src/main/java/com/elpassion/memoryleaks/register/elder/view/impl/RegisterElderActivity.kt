@@ -8,6 +8,7 @@ import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
 import com.elpassion.memoryleaks.register.api.impl.RegisterApi
 import com.elpassion.memoryleaks.register.elder.RegisterElderController
 import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
+import kotlinx.android.synthetic.main.register_elder_activity.*
 
 class RegisterElderActivity : BaseActivity(), RegisterElderView {
 
@@ -16,8 +17,7 @@ class RegisterElderActivity : BaseActivity(), RegisterElderView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_elder_activity)
-        val submit = findViewById(R.id.register_elder_submit)!!
-        submit.setOnClickListener { controller.onRegisterClick() }
+        register_elder_submit.setOnClickListener { controller.onRegisterClick() }
     }
 
     override fun showConfirmationScreen() {
@@ -28,5 +28,5 @@ class RegisterElderActivity : BaseActivity(), RegisterElderView {
 
     }
 
-    override fun getUserData() = (findViewById(R.id.register_elder_name) as TextView).text.toString()
+    override fun getUserData() = register_elder_name.text.toString()
 }
