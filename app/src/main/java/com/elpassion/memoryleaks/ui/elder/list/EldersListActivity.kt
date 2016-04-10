@@ -59,7 +59,7 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
     }
 
     override fun showError(t: Throwable) {
-        Log.e("Error", t.toString())
+        Log.e("Error", t.toString(), t)
         elders_list_coordinator.showSnackBar(R.string.error_occurred)
     }
 
