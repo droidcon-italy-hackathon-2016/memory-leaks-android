@@ -13,7 +13,7 @@ class VisitorDetailsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.visitor_details_screen)
-        val visitor: Visitor =  (intent.getSerializableExtra(VISITOR_KEY) as? Visitor) ?:Visitor("as","Asd")
+        val visitor: Visitor = (intent.getSerializableExtra(VISITOR_KEY) as? Visitor) ?: Visitor("as", "Asd")
         visitor_details_name.text = visitor.name
         visitor_details_relation.text = visitor.relation
         visitor_details_photo.setImageResource(R.drawable.grandpa_and_child)
@@ -23,10 +23,10 @@ class VisitorDetailsActivity : BaseActivity() {
     companion object {
         private val VISITOR_KEY = "visitor"
 
-        fun start(context: Context, visitor: Visitor) {
+        fun getStartingIntent(context: Context, visitor: Visitor): Intent {
             val intent = Intent(context, VisitorDetailsActivity::class.java)
             intent.putExtra(VISITOR_KEY, visitor)
-            context.startActivity(intent)
+            return intent
         }
     }
 }
