@@ -18,12 +18,11 @@ class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_visitor_activity)
-        val submit = findViewById(R.id.register_visitor_submit)!!
-        submit.setOnClickListener { controller.onRegisterClick() }
+        register_visitor_submit.setOnClickListener { controller.onRegisterClick() }
     }
 
     override fun showConfirmationScreen() {
-        ConfirmationActivity.start(this)
+        ConfirmationActivity.start(this, false)
     }
 
     override fun showError() {
