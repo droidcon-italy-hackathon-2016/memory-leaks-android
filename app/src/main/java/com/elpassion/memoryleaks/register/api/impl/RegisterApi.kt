@@ -9,7 +9,7 @@ import rx.Observable
 interface RegisterApi {
 
     @POST("users")
-    fun call(@Query("name") name: String, @Query("token") token: String? = null): Observable<Unit>
+    fun call(@Query("name") name: String, @Query("device_token") token: String? = null): Observable<Unit>
 
     companion object {
         fun getRegisterElderApiCall(): ((String, String) -> Observable<Unit>) = { elderId, token ->
