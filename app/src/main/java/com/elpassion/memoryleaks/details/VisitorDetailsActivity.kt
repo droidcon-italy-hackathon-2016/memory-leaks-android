@@ -2,14 +2,18 @@ package com.elpassion.memoryleaks.details
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.common.android.loadWithGlide
+import com.elpassion.memoryleaks.common.android.startIfNotPlaying
 import com.elpassion.memoryleaks.model.FullVisitor
 import kotlinx.android.synthetic.main.visitor_details_screen.*
 
 class VisitorDetailsActivity : BaseActivity() {
+
+    val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +22,11 @@ class VisitorDetailsActivity : BaseActivity() {
         visitor_details_name.text = visitor.name
         visitor_details_relation.text = visitor.relation
         visitor_details_photo.loadWithGlide(visitor.photoUrl)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mediaPlayer.startIfNotPlaying()
     }
 
 

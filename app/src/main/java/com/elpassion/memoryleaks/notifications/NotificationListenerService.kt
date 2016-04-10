@@ -1,8 +1,10 @@
 package com.elpassion.memoryleaks.notifications
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
+import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.details.VisitorDetailsActivity
 import com.elpassion.memoryleaks.model.FullVisitor
 import com.elpassion.memoryleaks.model.Visitor
