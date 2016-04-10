@@ -3,15 +3,16 @@ package com.elpassion.memoryleaks.register.api.impl
 import android.content.Context
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.provider.ContextProvider
+import com.elpassion.memoryleaks.model.User
 import com.google.android.gms.gcm.GoogleCloudMessaging
 import com.google.android.gms.iid.InstanceID
 import rx.Observable
 import rx.Subscriber
 
-class RegisterElderService(private val registerElderApiCall: (String, String) -> Observable<Unit>,
+class RegisterElderService(private val registerElderApiCall: (String, String) -> Observable<User>,
                            private val getContext: () -> Context) {
 
-    val registerElderCall: (String) -> Observable<Unit> = { name ->
+    val registerElderCall: (String) -> Observable<User> = { name ->
         createRequestTokenObservable()
                 .flatMap { token -> registerElderApiCall(name, token) }
 
@@ -32,7 +33,7 @@ class RegisterElderService(private val registerElderApiCall: (String, String) ->
     }
 
     companion object {
-        fun getRegisterElderCall(): (String) -> Observable<Unit> {
+        fun getRegisterElderCall(): (String) -> Observable<User> {
             return RegisterElderService(RegisterApi.getRegisterElderApiCall(), ContextProvider.get).registerElderCall
         }
     }

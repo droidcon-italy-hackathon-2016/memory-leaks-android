@@ -1,10 +1,11 @@
 package com.elpassion.memoryleaks.register.elder
 
+import com.elpassion.memoryleaks.model.User
 import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
 import rx.Observable
 
 class RegisterElderController(
-        private val registerElder: (name: String) -> Observable<Unit>,
+        private val registerElder: (name: String) -> Observable<User>,
         private val view: RegisterElderView) {
 
     fun onRegisterClick() {
@@ -12,7 +13,7 @@ class RegisterElderController(
         registerElder(name).subscribe(onSuccess, onError)
     }
 
-    val onSuccess = { unit: Unit ->
+    val onSuccess = { unit: User ->
         view.showConfirmationScreen()
     }
 

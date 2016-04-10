@@ -1,5 +1,6 @@
 package com.elpassion.memoryleaks.register.elder
 
+import com.elpassion.memoryleaks.model.User
 import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -12,13 +13,13 @@ import rx.Observable.just
 
 class RegisterElderControllerTest {
 
-    private val registerElder: (name: String) -> Observable<Unit> = mock()
+    private val registerElder: (name: String) -> Observable<User> = mock()
     private val view: RegisterElderView = mock()
     private val controller = RegisterElderController(registerElder, view)
 
     @Test
     fun shouldInvokeApiCall() {
-        whenever(registerElder(any())).thenReturn(just(Unit))
+        whenever(registerElder(any())).thenReturn(just(User("")))
         whenever(view.getUserData()).thenReturn("Maciej T.")
         controller.onRegisterClick()
         verify(registerElder).invoke("Maciej T.")
@@ -26,7 +27,7 @@ class RegisterElderControllerTest {
 
     @Test
     fun shouldShowConfirmationScreen() {
-        whenever(registerElder(any())).thenReturn(just(Unit))
+        whenever(registerElder(any())).thenReturn(just(User("")))
         controller.onRegisterClick()
         verify(view).showConfirmationScreen()
     }

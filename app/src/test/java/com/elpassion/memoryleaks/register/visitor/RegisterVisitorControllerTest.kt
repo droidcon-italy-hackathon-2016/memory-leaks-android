@@ -1,5 +1,6 @@
 package com.elpassion.memoryleaks.register.visitor
 
+import com.elpassion.memoryleaks.model.User
 import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -12,13 +13,13 @@ import rx.Observable.just
 
 class RegisterVisitorControllerTest {
 
-    private val apiCall: (name: String) -> Observable<Unit> = mock()
+    private val apiCall: (name: String) -> Observable<User> = mock()
     private val view: RegisterVisitorView = mock()
     private val controller = RegisterVisitorController(apiCall, view)
 
     @Test
     fun shouldInvokeApiCall() {
-        whenever(apiCall.invoke(any())).thenReturn(just(Unit))
+        whenever(apiCall.invoke(any())).thenReturn(just(User("")))
         whenever(view.getUserData()).thenReturn("Maciej G.")
         controller.onRegisterClick()
         verify(apiCall).invoke("Maciej G.")
@@ -26,7 +27,7 @@ class RegisterVisitorControllerTest {
 
     @Test
     fun shouldShowConfirmationScreen() {
-        whenever(apiCall.invoke(any())).thenReturn(just(Unit))
+        whenever(apiCall.invoke(any())).thenReturn(just(User("")))
         controller.onRegisterClick()
         verify(view).showConfirmationScreen()
     }
