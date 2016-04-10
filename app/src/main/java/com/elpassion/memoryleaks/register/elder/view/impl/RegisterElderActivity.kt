@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
+import com.elpassion.memoryleaks.common.android.showSnackBar
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
 import com.elpassion.memoryleaks.elder.main.ElderMainActivity
 import com.elpassion.memoryleaks.register.api.impl.RegisterElderService
 import com.elpassion.memoryleaks.register.elder.RegisterElderController
 import com.elpassion.memoryleaks.register.elder.view.RegisterElderView
-import com.elpassion.memoryleaks.ui.elder.list.EldersListActivity
 import kotlinx.android.synthetic.main.register_elder_activity.*
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
@@ -39,7 +39,7 @@ class RegisterElderActivity : BaseActivity(), RegisterElderView {
     }
 
     override fun showError() {
-
+        register_elder_coordinator.showSnackBar(R.string.error_occurred)
     }
 
     override fun getUserData() = register_elder_name.text.toString()
