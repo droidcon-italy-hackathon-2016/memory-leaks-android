@@ -7,16 +7,18 @@ import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.common.android.showSnackBar
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
-import com.elpassion.memoryleaks.register.api.impl.RegisterApi
+import com.elpassion.memoryleaks.register.api.impl.RegisterApi.Companion.getRegisterVisitorApiCall
 import com.elpassion.memoryleaks.register.visitor.RegisterVisitorController
 import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
 import kotlinx.android.synthetic.main.register_visitor_activity.*
+import rx.android.schedulers.AndroidSchedulers.mainThread
+import rx.schedulers.Schedulers.io
 
 class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {
 
     private val controller = RegisterVisitorController({
-        RegisterApi.getRegisterVisitorApiCall()
-                .invoke(it)
+        getRegisterVisitorApiCall()
+                .invoke(it).subscribeOn(io()).observeOn(mainThread())
                 .doOnNext { PreferenceManager.getDefaultSharedPreferences(this).edit().putString("visitor_id", it.id).apply() }
     }, this)
 
