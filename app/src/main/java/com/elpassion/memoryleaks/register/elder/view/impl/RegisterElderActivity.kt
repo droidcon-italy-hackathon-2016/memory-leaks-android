@@ -1,6 +1,7 @@
 package com.elpassion.memoryleaks.register.elder.view.impl
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
@@ -14,9 +15,11 @@ import rx.schedulers.Schedulers
 
 class RegisterElderActivity : BaseActivity(), RegisterElderView {
 
-    private val controller = RegisterElderController(
-            RegisterElderService.getRegisterElderCall().applySchedulers(),
-            this)
+    private val controller = RegisterElderController({
+        RegisterElderService.getRegisterElderCall().applySchedulers()
+                .invoke(it)
+                .doOnNext { PreferenceManager.getDefaultSharedPreferences(this).edit().putString("elder_id", it.id).apply() }
+    }, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

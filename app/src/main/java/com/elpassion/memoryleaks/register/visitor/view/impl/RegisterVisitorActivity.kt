@@ -1,6 +1,7 @@
 package com.elpassion.memoryleaks.register.visitor.view.impl
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.widget.TextView
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
@@ -13,7 +14,11 @@ import kotlinx.android.synthetic.main.register_visitor_activity.*
 
 class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {
 
-    private val controller = RegisterVisitorController(RegisterApi.getRegisterVisitorApiCall(), this)
+    private val controller = RegisterVisitorController({
+        RegisterApi.getRegisterVisitorApiCall()
+                .invoke(it)
+                .doOnNext { PreferenceManager.getDefaultSharedPreferences(this).edit().putString("visitor_id", it.id).apply() }
+    }, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
