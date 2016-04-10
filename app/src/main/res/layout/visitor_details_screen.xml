@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#AAeeeeee"
+        android:background="#DDeeeeee"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -29,14 +29,16 @@
             android:id="@+id/visitor_details_relation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:textStyle="bold"
             tools:text="Grandson"/>
 
         <TextView
             android:id="@+id/visitor_details_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:textStyle="bold"
             tools:text="Michael Apppliationasd"/>
     </LinearLayout>
 </FrameLayout>
