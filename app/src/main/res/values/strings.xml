@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MemoryLeaks</string>
-    <string name="ping_was_send">Ping was send</string>
+    <string name="ping_was_send">Ping was sent</string>
     <string name="error_occurred">Error occurred</string>
     <string name="send_ping">Send ping</string>
     <string name="elders_list_label">Elders which remember you</string>
