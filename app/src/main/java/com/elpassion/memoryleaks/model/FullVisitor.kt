@@ -5,4 +5,4 @@ import java.io.Serializable
 
 class FullVisitor(val name: String,
                   val relation: String,
-                  @SerializedName("photo_url") val photoUrl: String) : Serializable
+                  @SerializedName("photo_urls") val photoUrls: List<String>) : Serializable

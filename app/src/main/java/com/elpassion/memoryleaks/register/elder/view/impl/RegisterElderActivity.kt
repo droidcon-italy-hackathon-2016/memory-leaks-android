@@ -45,7 +45,6 @@ class RegisterElderActivity : BaseActivity(), RegisterElderView {
     override fun getUserData() = register_elder_name.text.toString()
 }
 
-
 //TODO: think about different approach
 fun <P, R> ((P) -> Observable<R>).applySchedulers(): (P) -> Observable<R> {
     return { arg: P ->

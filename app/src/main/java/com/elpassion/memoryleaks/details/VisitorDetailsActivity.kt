@@ -18,17 +18,16 @@ class VisitorDetailsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.visitor_details_screen)
-        val visitor = (intent.getSerializableExtra(VISITOR_KEY) as? FullVisitor) ?: FullVisitor("as", "Asd", "a")
+        val visitor = (intent.getSerializableExtra(VISITOR_KEY) as? FullVisitor) ?: FullVisitor("as", "Asd", listOf("a"))
         visitor_details_name.text = visitor.name
         visitor_details_relation.text = visitor.relation
-        visitor_details_photo.loadWithGlide(visitor.photoUrl)
+        visitor_details_photo.loadWithGlide(visitor.photoUrls[0])
     }
 
     override fun onResume() {
         super.onResume()
         mediaPlayer.startIfNotPlaying()
     }
-
 
     companion object {
         private val VISITOR_KEY = "visitor"
