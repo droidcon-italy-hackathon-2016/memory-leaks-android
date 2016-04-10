@@ -21,7 +21,7 @@ class EldersListAdapter(val eldersList: List<Elder>,
         val photo = holder.itemView.findViewById(R.id.elder_photo) as ImageView
         photo.loadWithGlide(eldersList[position].photoUrl)
         holder.itemView.findViewById(R.id.send_ping)!!.setOnClickListener {
-            onElderClickListener("grandma-id")
+            onElderClickListener(eldersList[position].id)
         }
     }
 
