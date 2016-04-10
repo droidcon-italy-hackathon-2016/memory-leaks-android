@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import com.elpassion.memoryleaks.ElderMainActivity
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.ui.elder.list.EldersListActivity
@@ -20,7 +21,7 @@ class ConfirmationActivity : BaseActivity() {
         if (intent.getBooleanExtra("is_elder", false)) {
             EldersListActivity.start(this)
         } else {
-
+            ElderMainActivity.start(this)
         }
     }
 

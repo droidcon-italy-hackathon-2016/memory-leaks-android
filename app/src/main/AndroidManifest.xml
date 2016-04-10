@@ -53,6 +53,7 @@
         </activity>
         <activity android:name=".confirmation.view.impl.ConfirmationActivity"/>
         <activity android:name=".details.VisitorDetailsActivity"/>
+        <activity android:name=".ElderMainActivity"/>
 
         <service
             android:name=".notifications.NotificationListenerService"
