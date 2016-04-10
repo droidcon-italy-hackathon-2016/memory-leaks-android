@@ -14,7 +14,7 @@ object PingApiCallProvider {
 
     private interface Api {
 
-        @POST("knock_knock")
+        @POST("knock_knocks")
         fun call(@Query("elder_id") elderId: String): Observable<Unit>
     }
 }
