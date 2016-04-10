@@ -15,7 +15,7 @@ class ElderAddControllerTest {
 
     val elderAddCall: (String, String, String) -> Observable<Unit> = mock()
     val elderAddView: ElderAddView = mock()
-    val elderAddController = ElderAddController(elderAddCall, elderAddView)
+    val elderAddController = ElderAddController(elderAddCall, elderAddView, "visitor_id")
 
     @Test
     fun shouldMakeCall() {

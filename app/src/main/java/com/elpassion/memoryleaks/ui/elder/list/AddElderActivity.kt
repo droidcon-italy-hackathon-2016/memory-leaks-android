@@ -23,7 +23,7 @@ class AddElderActivity : BaseActivity(), ElderAddView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_elder_activity)
         send_elder_secret_token.setOnClickListener({
-            ElderAddController(elderAddApiCall, this).onAddElderClick()
+            ElderAddController(elderAddApiCall, this, "place_for_your_id").onAddElderClick()
         })
     }
 
