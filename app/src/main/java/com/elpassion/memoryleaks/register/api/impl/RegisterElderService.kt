@@ -6,15 +6,29 @@ import com.elpassion.memoryleaks.common.provider.ContextProvider
 import com.google.android.gms.gcm.GoogleCloudMessaging
 import com.google.android.gms.iid.InstanceID
 import rx.Observable
+import rx.Subscriber
 
 class RegisterElderService(private val registerElderApiCall: (String, String) -> Observable<Unit>,
                            private val getContext: () -> Context) {
 
     val registerElderCall: (String) -> Observable<Unit> = { name ->
-        val instanceID = InstanceID.getInstance(getContext())
-        val token = instanceID.getToken(getContext().getString(R.string.gcm_defaultSenderId),
-                GoogleCloudMessaging.INSTANCE_ID_SCOPE, null)
-        registerElderApiCall(name, token)
+        createRequestTokenObservable()
+                .flatMap { token -> registerElderApiCall(name, token) }
+
+    }
+
+    private fun createRequestTokenObservable() = Observable.create<String> { requestToken(it) }
+
+    private fun requestToken(subscriber: Subscriber<in String>) {
+        try {
+            val instanceID = InstanceID.getInstance(getContext())
+            val token = instanceID.getToken(getContext().getString(R.string.gcm_defaultSenderId),
+                    GoogleCloudMessaging.INSTANCE_ID_SCOPE, null)
+            subscriber.onNext(token)
+            subscriber.onCompleted()
+        } catch(e: Exception) {
+            subscriber.onError(e)
+        }
     }
 
     companion object {
