@@ -23,8 +23,8 @@ import rx.schedulers.Schedulers
 
 class EldersListActivity : BaseActivity(), PingView, EldersListView {
 
-    val eldersListApiCall = {
-        getEldersListApiCall().invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    val eldersListApiCall = { userId: String ->
+        getEldersListApiCall().invoke(userId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
     val eldersListController by lazy { EldersListController(eldersListApiCall, this) }
     val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }

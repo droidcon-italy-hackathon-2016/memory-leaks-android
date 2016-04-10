@@ -14,7 +14,7 @@ import rx.Observable.just
 
 class EldersListControllerTest {
 
-    val eldersListCall: () -> Observable<Elders> = mock()
+    val eldersListCall: (String) -> Observable<Elders> = mock()
     val eldersListView: EldersListView = mock()
     val eldersListController = EldersListController(eldersListCall, eldersListView)
 
@@ -22,7 +22,7 @@ class EldersListControllerTest {
     fun shouldCallForElders() {
         mockApiToReturn(just(Elders(emptyList())))
         eldersListController.onViewResumed()
-        verify(eldersListCall).invoke()
+        verify(eldersListCall).invoke(any())
     }
 
     @Test
@@ -40,6 +40,6 @@ class EldersListControllerTest {
     }
 
     private fun mockApiToReturn(observable: Observable<Elders>) {
-        whenever(eldersListCall.invoke()).thenReturn(observable)
+        whenever(eldersListCall.invoke(any())).thenReturn(observable)
     }
 }
