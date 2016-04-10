@@ -27,6 +27,9 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
     val eldersListApiCall = { userId: String ->
         getEldersListApiCall().invoke(userId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
+    val pingApiCall = { elderId: String ->
+        getPingApiCall().invoke(elderId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    }
     val eldersListController by lazy { EldersListController(eldersListApiCall, this, getVisitorId()) }
     val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }
 
@@ -43,7 +46,7 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
     }
 
     private val onElderClickListener: (String) -> Unit = {
-        PingController(getPingApiCall(), this).onSendPingClicked(it)
+        PingController(pingApiCall, this).onSendPingClicked(it)
         mediaPlayer.startIfNotPlaying()
     }
 
