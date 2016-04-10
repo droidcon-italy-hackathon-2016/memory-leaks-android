@@ -12,12 +12,17 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/register_elder_name"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Your name"
-            android:inputType="textPersonName"/>
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/register_elder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your name"
+                android:inputType="textPersonName"/>
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/register_elder_submit"
