@@ -4,10 +4,11 @@ import com.elpassion.memoryleaks.model.Elders
 import rx.Observable
 
 class EldersListController(val eldersListCall: (String) -> Observable<Elders>,
-                           val eldersListView: EldersListView) {
+                           val eldersListView: EldersListView,
+                           val visitorId: String) {
 
     fun onViewResumed() {
-        eldersListCall.invoke("db9f8eb6-2e40-4862-a4ef-9381b6310f5c").subscribe(onSuccess, onError)
+        eldersListCall.invoke(visitorId).subscribe(onSuccess, onError)
     }
 
     private val onSuccess = { elders: Elders ->

@@ -26,7 +26,7 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
     val eldersListApiCall = { userId: String ->
         getEldersListApiCall().invoke(userId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
-    val eldersListController by lazy { EldersListController(eldersListApiCall, this) }
+    val eldersListController by lazy { EldersListController(eldersListApiCall, this, "db9f8eb6-2e40-4862-a4ef-9381b6310f5c") }
     val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
