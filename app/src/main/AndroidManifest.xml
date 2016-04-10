@@ -32,6 +32,7 @@
             android:label="@string/elders_list_label"/>
         <activity
             android:name=".register.elder.view.impl.RegisterElderActivity"
+            android:windowSoftInputMode="adjustResize"
             android:label="Elder app">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -41,9 +42,11 @@
         </activity>
         <activity
             android:name=".ui.elder.list.AddElderActivity"
+            android:windowSoftInputMode="adjustResize"
             android:label="Add elder"/>
         <activity
             android:name=".register.visitor.view.impl.RegisterVisitorActivity"
+            android:windowSoftInputMode="adjustResize"
             android:label="Care Taker app">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
