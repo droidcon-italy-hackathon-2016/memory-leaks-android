@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/add_elder_coordinator"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/elder_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Elder secret token"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/send_elder_secret_token"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Add"/>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
