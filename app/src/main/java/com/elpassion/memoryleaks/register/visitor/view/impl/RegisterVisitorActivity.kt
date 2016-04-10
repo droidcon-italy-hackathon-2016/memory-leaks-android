@@ -35,6 +35,7 @@ class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {
 
     override fun showConfirmationScreen() {
         ConfirmationActivity.start(this, false)
+        finish()
     }
 
     override fun showError() {

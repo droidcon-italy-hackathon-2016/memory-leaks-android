@@ -35,6 +35,7 @@ class RegisterElderActivity : BaseActivity(), RegisterElderView {
 
     override fun showConfirmationScreen() {
         ConfirmationActivity.start(this, true)
+        finish()
     }
 
     override fun showError() {

@@ -23,6 +23,7 @@ class ConfirmationActivity : BaseActivity() {
         } else {
             EldersListActivity.start(this)
         }
+        finish()
     }
 
     companion object {
