@@ -10,6 +10,7 @@ import com.elpassion.memoryleaks.confirmation.view.impl.ConfirmationActivity
 import com.elpassion.memoryleaks.register.api.impl.RegisterApi.Companion.getRegisterVisitorApiCall
 import com.elpassion.memoryleaks.register.visitor.RegisterVisitorController
 import com.elpassion.memoryleaks.register.visitor.view.RegisterVisitorView
+import com.elpassion.memoryleaks.ui.elder.list.EldersListActivity
 import kotlinx.android.synthetic.main.register_visitor_activity.*
 import rx.android.schedulers.AndroidSchedulers.mainThread
 import rx.schedulers.Schedulers.io
@@ -25,6 +26,10 @@ class RegisterVisitorActivity : BaseActivity(), RegisterVisitorView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_visitor_activity)
+        if (PreferenceManager.getDefaultSharedPreferences(this).getString("visitor_id", null) != null) {
+            EldersListActivity.start(this)
+            finish()
+        }
         register_visitor_submit.setOnClickListener { controller.onRegisterClick() }
     }
 
