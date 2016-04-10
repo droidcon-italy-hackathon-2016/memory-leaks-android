@@ -26,7 +26,7 @@ class VisitorDetailsActivity : BaseActivity() {
         val visitor = intent.getSerializableExtra(VISITOR_KEY) as FullVisitor
         visitor_details_name.text = visitor.name
         visitor_details_relation.text = visitor.relation
-        visitor_details_photo.loadWithGlide(visitor.photoUrls[0])
+        visitor_details_photo_pager.pageMargin = 20
         visitor_details_photo_pager.adapter = MyViewPager(visitor.photoUrls)
     }
 
