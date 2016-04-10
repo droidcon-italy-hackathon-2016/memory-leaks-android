@@ -19,9 +19,9 @@ class ConfirmationActivity : BaseActivity() {
 
     private val showNextScreen = {
         if (intent.getBooleanExtra(IS_ELDER_KEY, false)) {
-            EldersListActivity.start(this)
-        } else {
             ElderMainActivity.start(this)
+        } else {
+            EldersListActivity.start(this)
         }
     }
 
