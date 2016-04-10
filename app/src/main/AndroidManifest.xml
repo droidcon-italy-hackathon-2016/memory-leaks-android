@@ -27,7 +27,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.EldersListActivity"/>
+        <activity android:name=".ui.elder.list.EldersListActivity"/>
         <activity
             android:name=".register.elder.view.impl.RegisterElderActivity"
             android:label="Elder app">
