@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.elpassion.memoryleaks">
+<manifest package="com.elpassion.memoryleaks"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <permission
         android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"
@@ -53,7 +53,7 @@
         </activity>
         <activity android:name=".confirmation.view.impl.ConfirmationActivity"/>
         <activity android:name=".details.VisitorDetailsActivity"/>
-        <activity android:name=".ElderMainActivity"/>
+        <activity android:name=".elder.main.ElderMainActivity"/>
 
         <service
             android:name=".notifications.NotificationListenerService"
