@@ -21,21 +21,21 @@ class EldersListControllerTest {
     @Test
     fun shouldCallForElders() {
         mockApiToReturn(just(emptyList()))
-        eldersListController.onViewCreated()
+        eldersListController.onViewResumed()
         verify(eldersListCall).invoke()
     }
 
     @Test
     fun shouldDisplayElders() {
         mockApiToReturn(just(emptyList()))
-        eldersListController.onViewCreated()
+        eldersListController.onViewResumed()
         verify(eldersListView).showElders(any())
     }
 
     @Test
     fun shouldDisplayError() {
         mockApiToReturn(error(RuntimeException()))
-        eldersListController.onViewCreated()
+        eldersListController.onViewResumed()
         verify(eldersListView).showError()
     }
 

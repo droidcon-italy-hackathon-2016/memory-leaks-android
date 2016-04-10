@@ -32,7 +32,11 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
         setContentView(R.layout.elders_list_activity)
         elders_list.layoutManager = LinearLayoutManager(this)
         add_elder.setOnClickListener({ AddElderActivity.start(this) })
-        eldersListController.onViewCreated()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        eldersListController.onViewResumed()
     }
 
     private val onElderClickListener: (String) -> Unit = {

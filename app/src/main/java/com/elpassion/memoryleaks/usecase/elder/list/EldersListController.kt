@@ -6,7 +6,7 @@ import rx.Observable
 class EldersListController(val eldersListCall: () -> Observable<List<Elder>>,
                            val eldersListView: EldersListView) {
 
-    fun onViewCreated() {
+    fun onViewResumed() {
         eldersListCall.invoke().subscribe(onSuccess, onError)
     }
 
