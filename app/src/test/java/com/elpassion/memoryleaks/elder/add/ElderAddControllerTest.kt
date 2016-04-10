@@ -2,10 +2,7 @@ package com.elpassion.memoryleaks.elder.add
 
 import com.elpassion.memoryleaks.usecase.elder.add.ElderAddController
 import com.elpassion.memoryleaks.usecase.elder.add.ElderAddView
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockito_kotlin.*
 import org.junit.Test
 import rx.Observable
 import rx.Observable.error
@@ -15,13 +12,14 @@ class ElderAddControllerTest {
 
     val elderAddCall: (String, String, String) -> Observable<Unit> = mock()
     val elderAddView: ElderAddView = mock()
-    val elderAddController = ElderAddController(elderAddCall, elderAddView, "visitor_id")
+    val visitor_id = "visitor_id"
+    val elderAddController = ElderAddController(elderAddCall, elderAddView, visitor_id)
 
     @Test
     fun shouldMakeCall() {
         mockApiToReturn(just(Unit))
         elderAddController.onAddElderClick()
-        verify(elderAddCall).invoke(any(), any(), any())
+        verify(elderAddCall).invoke(any(), eq(visitor_id), any())
     }
 
     @Test
