@@ -36,7 +36,7 @@ class EldersListControllerTest {
     fun shouldDisplayError() {
         mockApiToReturn(error(RuntimeException()))
         eldersListController.onViewResumed()
-        verify(eldersListView).showError()
+        verify(eldersListView).showError(any())
     }
 
     private fun mockApiToReturn(observable: Observable<List<Elder>>) {

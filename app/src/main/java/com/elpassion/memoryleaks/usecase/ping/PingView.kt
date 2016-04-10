@@ -4,5 +4,5 @@ interface PingView {
 
     fun showNotificationSendScreen()
 
-    fun showError()
+    fun showError(t: Throwable)
 }

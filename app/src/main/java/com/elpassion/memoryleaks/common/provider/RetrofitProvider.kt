@@ -10,7 +10,7 @@ object RetrofitProvider {
 
     private val instance by lazy {
         Retrofit.Builder()
-                .baseUrl("https://google.com")
+                .baseUrl("http://172.16.1.7:3000/")
                 .client(createOkHttpClient())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

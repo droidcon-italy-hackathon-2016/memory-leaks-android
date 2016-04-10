@@ -15,6 +15,6 @@ class EldersListController(val eldersListCall: () -> Observable<List<Elder>>,
     }
 
     private val onError = { t: Throwable ->
-        eldersListView.showError()
+        eldersListView.showError(t)
     }
 }

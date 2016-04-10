@@ -1,6 +1,5 @@
 package com.elpassion.memoryleaks.usecase.ping
 
-import com.elpassion.memoryleaks.usecase.ping.PingView
 import rx.Observable
 
 class PingController(val pingApi: (String) -> Observable<Unit>, val pingView: PingView) {
@@ -14,7 +13,7 @@ class PingController(val pingApi: (String) -> Observable<Unit>, val pingView: Pi
     }
 
     private val onError = { t: Throwable ->
-        pingView.showError()
+        pingView.showError(t)
     }
 }
 

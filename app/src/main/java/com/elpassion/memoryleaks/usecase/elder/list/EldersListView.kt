@@ -6,5 +6,5 @@ interface EldersListView {
 
     fun showElders(elders: List<Elder>)
 
-    fun showError()
+    fun showError(t: Throwable)
 }

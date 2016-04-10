@@ -9,6 +9,7 @@ import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.common.android.showSnackBar
@@ -21,10 +22,15 @@ import com.elpassion.memoryleaks.usecase.ping.PingController
 import com.elpassion.memoryleaks.usecase.ping.PingView
 import com.elpassion.memoryleaks.usecase.ping.api.PingApiCallProvider.getPingApiCall
 import kotlinx.android.synthetic.main.elders_list_activity.*
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 class EldersListActivity : BaseActivity(), PingView, EldersListView {
 
-    val eldersListController by lazy { EldersListController(getEldersListApiCall(), this) }
+    val eldersListApiCall = {
+        getEldersListApiCall().invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    }
+    val eldersListController by lazy { EldersListController(eldersListApiCall, this) }
     val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +58,8 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
         elders_list_coordinator.showSnackBar(R.string.ping_was_send)
     }
 
-    override fun showError() {
+    override fun showError(t: Throwable) {
+        Log.e("Error", t.toString())
         elders_list_coordinator.showSnackBar(R.string.error_occurred)
     }
 

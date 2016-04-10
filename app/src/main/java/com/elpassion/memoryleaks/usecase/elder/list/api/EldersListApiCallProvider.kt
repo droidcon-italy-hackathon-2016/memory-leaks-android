@@ -13,7 +13,7 @@ object EldersListApiCallProvider {
 
     private interface Api {
 
-        @GET("elders")
+        @GET("relatives.json?user_id=93e27a28-65b4-481b-a468-53bc34224e03")
         fun call(): Observable<List<Elder>>
     }
 }

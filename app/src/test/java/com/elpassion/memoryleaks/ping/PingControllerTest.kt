@@ -35,7 +35,7 @@ class PingControllerTest {
     fun shouldShowErrorWhenApiCallFails() {
         mockApiToReturn(error(RuntimeException()))
         onSendPingClick()
-        verify(pingView).showError()
+        verify(pingView).showError(any())
     }
 
     private fun mockApiToReturn(observable: Observable<Unit>) {
