@@ -3,4 +3,5 @@
     <string name="ping_was_send">Ping was send</string>
     <string name="error_occurred">Error occurred</string>
     <string name="send_ping">Send ping</string>
+    <string name="elders_list_label">Elder which remember you</string>
 </resources>

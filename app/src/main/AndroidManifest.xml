@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.elpassion.memoryleaks"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.elpassion.memoryleaks">
 
     <permission
         android:name="com.elpassion.memoryleaks.permission.C2D_MESSAGE"
@@ -27,7 +27,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.elder.list.EldersListActivity"/>
+        <activity
+            android:name=".ui.elder.list.EldersListActivity"
+            android:label="@string/elders_list_label"/>
         <activity
             android:name=".register.elder.view.impl.RegisterElderActivity"
             android:label="Elder app">
@@ -37,6 +39,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.elder.list.AddElderActivity"
+            android:label="Add elder"/>
         <activity
             android:name=".register.visitor.view.impl.RegisterVisitorActivity"
             android:label="Care Taker app">
