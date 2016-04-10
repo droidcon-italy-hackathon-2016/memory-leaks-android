@@ -4,4 +4,8 @@ interface ElderAddView {
     fun showSuccess()
 
     fun showError()
+
+    fun getRelation(): String
+
+    fun getElderId(): String
 }

@@ -23,6 +23,17 @@
                 android:hint="Elder secret token"/>
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/your_relation_to_elder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your relation to elder"/>
+        </android.support.design.widget.TextInputLayout>
+
         <Button
             android:id="@+id/send_elder_secret_token"
             android:layout_width="wrap_content"

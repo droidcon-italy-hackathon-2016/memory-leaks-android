@@ -2,11 +2,11 @@ package com.elpassion.memoryleaks.usecase.elder.add
 
 import rx.Observable
 
-class ElderAddController(val elderAddCall: () -> Observable<Unit>,
+class ElderAddController(val addElder: (String, String, String) -> Observable<Unit>,
                          val elderAddView: ElderAddView) {
 
     fun onAddElderClick() {
-        elderAddCall.invoke().subscribe(onSuccess, onError)
+        addElder(elderAddView.getElderId(), "b", elderAddView.getRelation()).subscribe(onSuccess, onError)
     }
 
     private val onSuccess: (Unit) -> Unit = {

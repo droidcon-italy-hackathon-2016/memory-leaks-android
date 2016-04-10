@@ -15,8 +15,8 @@ import rx.schedulers.Schedulers.io
 
 class AddElderActivity : BaseActivity(), ElderAddView {
 
-    val elderAddApiCall = {
-        getElderAddApiCall().invoke().subscribeOn(io()).observeOn(mainThread())
+    val elderAddApiCall = { elderId: String, childId: String, relation: String ->
+        getElderAddApiCall().invoke(elderId, childId, relation).subscribeOn(io()).observeOn(mainThread())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +34,10 @@ class AddElderActivity : BaseActivity(), ElderAddView {
     override fun showError() {
         add_elder_coordinator.showSnackBar(R.string.error_occurred)
     }
+
+    override fun getRelation() = your_relation_to_elder.text.toString().trim()
+
+    override fun getElderId() = elder_id.text.toString().trim()
 
     companion object {
         fun start(context: Context) {
