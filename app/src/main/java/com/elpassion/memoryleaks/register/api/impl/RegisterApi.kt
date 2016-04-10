@@ -2,12 +2,13 @@ package com.elpassion.memoryleaks.register.api.impl
 
 import com.elpassion.memoryleaks.common.provider.RetrofitProvider
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 import rx.Observable
 
 interface RegisterApi {
 
-    @GET("ping")
+    @POST("users")
     fun call(@Query("name") name: String, @Query("token") token: String? = null): Observable<Unit>
 
     companion object {
