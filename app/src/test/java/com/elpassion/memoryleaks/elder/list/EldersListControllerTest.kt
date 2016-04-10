@@ -1,8 +1,8 @@
 package com.elpassion.memoryleaks.elder.list
 
+import com.elpassion.memoryleaks.model.Elders
 import com.elpassion.memoryleaks.usecase.elder.list.EldersListController
 import com.elpassion.memoryleaks.usecase.elder.list.EldersListView
-import com.elpassion.memoryleaks.model.Elder
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -14,20 +14,20 @@ import rx.Observable.just
 
 class EldersListControllerTest {
 
-    val eldersListCall: () -> Observable<List<Elder>> = mock()
+    val eldersListCall: () -> Observable<Elders> = mock()
     val eldersListView: EldersListView = mock()
     val eldersListController = EldersListController(eldersListCall, eldersListView)
 
     @Test
     fun shouldCallForElders() {
-        mockApiToReturn(just(emptyList()))
+        mockApiToReturn(just(Elders(emptyList())))
         eldersListController.onViewResumed()
         verify(eldersListCall).invoke()
     }
 
     @Test
     fun shouldDisplayElders() {
-        mockApiToReturn(just(emptyList()))
+        mockApiToReturn(just(Elders(emptyList())))
         eldersListController.onViewResumed()
         verify(eldersListView).showElders(any())
     }
@@ -39,7 +39,7 @@ class EldersListControllerTest {
         verify(eldersListView).showError(any())
     }
 
-    private fun mockApiToReturn(observable: Observable<List<Elder>>) {
+    private fun mockApiToReturn(observable: Observable<Elders>) {
         whenever(eldersListCall.invoke()).thenReturn(observable)
     }
 }

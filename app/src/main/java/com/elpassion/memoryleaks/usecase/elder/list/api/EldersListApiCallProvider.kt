@@ -1,7 +1,7 @@
 package com.elpassion.memoryleaks.usecase.elder.list.api
 
 import com.elpassion.memoryleaks.common.provider.RetrofitProvider
-import com.elpassion.memoryleaks.model.Elder
+import com.elpassion.memoryleaks.model.Elders
 import retrofit2.http.GET
 import rx.Observable
 
@@ -14,6 +14,6 @@ object EldersListApiCallProvider {
     private interface Api {
 
         @GET("relatives.json?user_id=93e27a28-65b4-481b-a468-53bc34224e03")
-        fun call(): Observable<List<Elder>>
+        fun call(): Observable<Elders>
     }
 }

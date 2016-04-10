@@ -4,20 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.support.annotation.StringRes
-import android.support.design.widget.CoordinatorLayout
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
 import com.elpassion.memoryleaks.common.android.showSnackBar
 import com.elpassion.memoryleaks.common.android.startIfNotPlaying
+import com.elpassion.memoryleaks.model.Elders
 import com.elpassion.memoryleaks.usecase.elder.list.EldersListController
 import com.elpassion.memoryleaks.usecase.elder.list.EldersListView
 import com.elpassion.memoryleaks.usecase.elder.list.api.EldersListApiCallProvider.getEldersListApiCall
-import com.elpassion.memoryleaks.model.Elder
 import com.elpassion.memoryleaks.usecase.ping.PingController
 import com.elpassion.memoryleaks.usecase.ping.PingView
 import com.elpassion.memoryleaks.usecase.ping.api.PingApiCallProvider.getPingApiCall
@@ -50,8 +46,8 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
         mediaPlayer.startIfNotPlaying()
     }
 
-    override fun showElders(elders: List<Elder>) {
-        elders_list.adapter = EldersListAdapter(elders, onElderClickListener)
+    override fun showElders(elders: Elders) {
+        elders_list.adapter = EldersListAdapter(elders.relatives, onElderClickListener)
     }
 
     override fun showNotificationSendScreen() {
