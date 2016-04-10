@@ -1,5 +1,7 @@
 package com.elpassion.memoryleaks.ui.elder.list;
 
+import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.annotation.StringRes
@@ -8,6 +10,9 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.elpassion.memoryleaks.R
+import com.elpassion.memoryleaks.common.android.BaseActivity
+import com.elpassion.memoryleaks.common.android.showSnackBar
+import com.elpassion.memoryleaks.common.android.startIfNotPlaying
 import com.elpassion.memoryleaks.usecase.elder.list.EldersListController
 import com.elpassion.memoryleaks.usecase.elder.list.EldersListView
 import com.elpassion.memoryleaks.usecase.elder.list.api.EldersListApiCallProvider.getEldersListApiCall
@@ -17,7 +22,7 @@ import com.elpassion.memoryleaks.usecase.ping.PingView
 import com.elpassion.memoryleaks.usecase.ping.api.PingApiCallProvider.getPingApiCall
 import kotlinx.android.synthetic.main.elders_list_activity.*
 
-class EldersListActivity : AppCompatActivity(), PingView, EldersListView {
+class EldersListActivity : BaseActivity(), PingView, EldersListView {
 
     val eldersListController by lazy { EldersListController(getEldersListApiCall(), this) }
     val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }
@@ -46,11 +51,9 @@ class EldersListActivity : AppCompatActivity(), PingView, EldersListView {
         elders_list_coordinator.showSnackBar(R.string.error_occurred)
     }
 
-    fun CoordinatorLayout.showSnackBar(@StringRes message: Int) {
-        Snackbar.make(this, message, Snackbar.LENGTH_INDEFINITE).show()
-    }
-
-    fun MediaPlayer.startIfNotPlaying() {
-        if (!isPlaying) start()
+    companion object {
+        fun start(context: Context) {
+            context.startActivity(Intent(context, EldersListActivity::class.java))
+        }
     }
 }
