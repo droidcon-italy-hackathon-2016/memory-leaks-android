@@ -1,3 +1,5 @@
 package com.elpassion.memoryleaks.model
 
-class Elder
+import com.google.gson.annotations.SerializedName
+
+class Elder(@SerializedName("photo_url") val photoUrl: String)
