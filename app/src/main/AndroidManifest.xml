@@ -52,6 +52,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".confirmation.view.impl.ConfirmationActivity"/>
+        <activity android:name=".details.VisitorDetailsActivity"/>
 
         <service
             android:name=".notifications.NotificationListenerService"
