@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import com.elpassion.memoryleaks.elder.main.ElderMainActivity
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
+import com.elpassion.memoryleaks.elder.main.ElderMainActivity
 import com.elpassion.memoryleaks.ui.elder.list.EldersListActivity
 
 class ConfirmationActivity : BaseActivity() {
@@ -18,7 +18,7 @@ class ConfirmationActivity : BaseActivity() {
     }
 
     private val showNextScreen = {
-        if (intent.getBooleanExtra("is_elder", false)) {
+        if (intent.getBooleanExtra(IS_ELDER_KEY, false)) {
             EldersListActivity.start(this)
         } else {
             ElderMainActivity.start(this)
@@ -27,9 +27,11 @@ class ConfirmationActivity : BaseActivity() {
 
     companion object {
 
+        private val IS_ELDER_KEY = "is_elder"
+
         fun start(context: Context, elder: Boolean) {
             val intent = Intent(context, ConfirmationActivity::class.java)
-            intent.putExtra("is_elder", elder)
+            intent.putExtra(IS_ELDER_KEY, elder)
             context.startActivity(intent)
         }
     }
