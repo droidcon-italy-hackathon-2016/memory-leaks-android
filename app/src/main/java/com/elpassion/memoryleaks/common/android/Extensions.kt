@@ -1,6 +1,8 @@
 package com.elpassion.memoryleaks.common.android
 
+import android.content.Context
 import android.media.MediaPlayer
+import android.preference.PreferenceManager
 import android.support.annotation.StringRes
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
@@ -19,3 +21,5 @@ fun MediaPlayer.startIfNotPlaying() {
 fun ImageView.loadWithGlide(url: String) {
     Glide.with(context).load(url).into(this)
 }
+
+fun Context.getVisitorId() = PreferenceManager.getDefaultSharedPreferences(this).getString("visitor_id", null)

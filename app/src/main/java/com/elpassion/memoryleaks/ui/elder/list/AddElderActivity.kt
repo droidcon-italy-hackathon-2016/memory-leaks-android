@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
+import com.elpassion.memoryleaks.common.android.getVisitorId
 import com.elpassion.memoryleaks.common.android.showSnackBar
 import com.elpassion.memoryleaks.usecase.elder.add.ElderAddController
 import com.elpassion.memoryleaks.usecase.elder.add.ElderAddView
@@ -23,7 +24,7 @@ class AddElderActivity : BaseActivity(), ElderAddView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_elder_activity)
         send_elder_secret_token.setOnClickListener({
-            ElderAddController(elderAddApiCall, this, "place_for_your_id").onAddElderClick()
+            ElderAddController(elderAddApiCall, this, getVisitorId()).onAddElderClick()
         })
     }
 

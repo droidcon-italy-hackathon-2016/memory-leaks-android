@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.elpassion.memoryleaks.R
 import com.elpassion.memoryleaks.common.android.BaseActivity
+import com.elpassion.memoryleaks.common.android.getVisitorId
 import com.elpassion.memoryleaks.common.android.showSnackBar
 import com.elpassion.memoryleaks.common.android.startIfNotPlaying
 import com.elpassion.memoryleaks.model.Elders
@@ -26,7 +27,7 @@ class EldersListActivity : BaseActivity(), PingView, EldersListView {
     val eldersListApiCall = { userId: String ->
         getEldersListApiCall().invoke(userId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
-    val eldersListController by lazy { EldersListController(eldersListApiCall, this, "db9f8eb6-2e40-4862-a4ef-9381b6310f5c") }
+    val eldersListController by lazy { EldersListController(eldersListApiCall, this, getVisitorId()) }
     val mediaPlayer by lazy { MediaPlayer.create(this, R.raw.door_bell) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
